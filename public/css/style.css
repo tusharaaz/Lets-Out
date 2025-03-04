@@ -111,3 +111,15 @@ body {
     background-color: #dcdcdd;
 }
 
+.like{
+    color: white;
+    font-size: 20px
+}
+
+.like:hover{
+    color: red;
+    transition: 0.3s;
+    z-index: 1;
+
+
+}

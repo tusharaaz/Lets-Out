@@ -11,6 +11,7 @@
           <img  src="<%= listing.image.url %>" class="card-img-top" style="height: 15rem" alt="<%= listing.title %>">
           <div class="card-img-overlay"></div>
           <div class="card-body ">
+            
             <h5 class="card-title"><%= listing.title %></h5>
             <p class="card-text">
               <%= listing.description.substring(0, 100) %>...
@@ -19,6 +20,8 @@
                 <div class="overlay"></div>
                 <span class="position-absolute top-0 start-0 m-2 badge bg-success">₹ <%= listing.price.toLocaleString("en-IN") %>/night</span>
               </p>
+              <div class="overlay"></div>
+              <span class="position-absolute top-0 end-0 m-2 like"><i class="fa-solid fa-heart"></i></span>
             </p>
            
           </div>
