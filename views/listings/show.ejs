@@ -1,21 +1,47 @@
 <% layout("layouts/boilerplate") %>
-<body>
- <h3>Listing Details</h3>
-<ul>
-    <% if (listing) { %>
-        <li><strong>Title:</strong> <%= listing.title || "No title available" %></li>
-        <li><strong>Description:</strong> <%= listing.description || "No description available" %></li>
-        <li><strong>Price:</strong> &#8377; <%= listing.price.toLocaleString("en-IN") %></li>
 
-        <li><strong>Location:</strong> <%= listing.location || "Location unknown" %></li>
-        <li><strong>Country:</strong> <%= listing.country || "Country unknown" %></li>
-    <% } else { %>
-        <p>Listing not found.</p>
-    <% } %>
-</ul>
-<br>
-<a href="/listings/<%= listing._id %>/edit">Edit this listing</a>
-<form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
-    <button>Delete this listing</button>
+<body class="bg-light">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <% if (listing) { %>
+
+                <img src="<%= listing.image ? listing.image.url : 'https://via.placeholder.com/600x400?text=No+Image' %>" 
+                class="card-img-top" 
+                style="height: 250px; object-fit: cover;" 
+                alt="Listing Image">
+              <h3 class="card-title fw-bold text-primary">Listing Details</h3>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Title:</strong> <%= listing.title || "No title available" %></li>
+                <li class="list-group-item"><strong>Description:</strong> <%= listing.description || "No description available" %></li>
+                <li class="list-group-item"><strong>Price:</strong> &#8377; <%= listing.price.toLocaleString("en-IN") %></li>
+                <li class="list-group-item"><strong>Location:</strong> <%= listing.location || "Location unknown" %></li>
+                <li class="list-group-item"><strong>Country:</strong> <%= listing.country || "Country unknown" %></li>
+              </ul>
+
+              <div class="mt-4 d-flex gap-3">
+                <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark">
+                  <i class="bi bi-pencil-square"></i> Edit this listing
+                </a>
+
+                <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+                  <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash"></i> Delete this listing
+                  </button>
+                </form>
+              </div>
+
+            <% } else { %>
+              <p class="text-danger">Listing not found.</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
 
 </body>
