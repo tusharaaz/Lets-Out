@@ -1,6 +1,7 @@
 <% layout("layouts/boilerplate") %>
 
 
+
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
   <% for(let listing of allListings) { %>
     <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
@@ -18,7 +19,9 @@
               <br>
               <p>
                 <div class="overlay"></div>
-                <span class="position-absolute top-0 start-0 m-2 badge bg-success">₹ <%= listing.price.toLocaleString("en-IN") %>/night</span>
+                <span class="position-absolute top-0 start-0 m-2 badge bg-success">
+                  ₹ <%= listing.price ? listing.price.toLocaleString("en-IN") : 0 %>/night
+                </span>
               </p>
               <div class="overlay"></div>
               <span class="position-absolute top-0 end-0 m-2 like"><i class="fa-solid fa-heart"></i></span>

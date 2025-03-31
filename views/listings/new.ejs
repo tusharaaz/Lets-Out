@@ -2,47 +2,56 @@
 <br><br>
     <div class="row">
         <div class="col-8 offset-2">
-
-            <body>
-                <h3>Create your new listing</h3>
-                <form action="/listings" method="POST">
-                    <div class="mb-3">
-                        <label for="title" class="form-lable">Title</label>
-
-                        <input type="text" name="listing[title]" placeholder="Name" class="form-control" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="description" class="form-lable">Description</label>
-                        <textarea name="listing[description]" placeholder="Enter description"
-                            class="form-control"></textarea>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="image" class="form-lable">Image</label>
-                        <input type="text" class="form-control" name="listing[image][url]"
-                            placeholder="Enter Image URL/Link">
-                    </div>
-
-                    <div class="row">
-
-                        <div class="mb-3 col-md-4">
-                            <label for="price" class="form-lable">Price</label>
-                            <input type="number" name="listing[price]" placeholder="Enter Price" class="form-control">
+            <h3>Create your new listing</h3>
+            <form action="/listings" class="needs-validation"  method="POST" novalidate>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" name="listing[title]" placeholder="Name" class="form-control" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+            
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="listing[description]" placeholder="Enter description" class="form-control" required></textarea>
+                    <div class="invalid-feedback">
+                        Please enter a short description.
+                      </div>
+                </div>
+            
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="text" class="form-control" name="listing[image][url]" placeholder="Enter Image URL/Link">
+                </div>
+            
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" name="listing[price]" placeholder="Enter Price" class="form-control" required min="1">
+                        <div class="invalid-feedback">
+                            Please enter a valid price.
                         </div>
+                    </div>
 
                         <div class="mb-3 col-md-8">
                             <label for="country" class="form-lable">Country</label>
                             <input type="text" name="listing[country]" placeholder="Enter country name"
-                                class="form-control">
+                                class="form-control" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid country.
+                                </div>
                         </div>
                     </div>
 
 
 
                     <div class="mb-3">
-                        <label for="location" class="form-lable">Location</label>
-                        <input type="text" name="listing[location]" placeholder="Enter location" class="form-control">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" name="listing[location]" placeholder="Enter location" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Please enter a short location.
+                          </div>
                     </div>
 
 
@@ -54,3 +63,4 @@
             </body>
         </div>
     </div>
+    
