@@ -16,7 +16,7 @@
     
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" aria-current="page" href="/">
+        <a class="nav-link " aria-current="page" href="/">
           <i class="fas fa-home me-1"></i> Home
         </a>
         <a class="nav-link" href="/listings">
@@ -24,14 +24,51 @@
         </a>
         <a class="nav-link" href="/listings/new">
           <i class="fas fa-plus me-1"></i> Add Listing
-          <div class="ms-3 d-flex align-items-center">
-            <a href="/signup" class="btn btn-primary signup-button">
-              <i class="fas fa-user-plus me-2"></i>Sign Up
-            </a>
-          </div>
+
+        </a>
+           <!-- Account Dropdown -->
+        <li class="nav-item dropdown ms-3">
+          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-user-circle"></i>
+            <span class="ms-1">My Account</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <% if(!currentUser){ %>
+              <li>
+                <a class="dropdown-item" href="/signup">
+                  <i class="fas fa-user-plus"></i>
+                  <span class="ms-2">Sign Up</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/login">
+                  <i class="fas fa-sign-in-alt"></i>
+                  <span class="ms-2">Login</span>
+                </a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+
+            <%}%>
+            <% if(currentUser){ %>
+              
+              <li>
+                <a class="dropdown-item text-danger" href="/logout">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <span class="ms-2">Logout</span>
+                </a>
+              </li>
+
+              <%}%>
+            
+           
+          </ul>
+        </li>
         
       </div>
     </div>
   </div>
 </nav>
+
+
+
 

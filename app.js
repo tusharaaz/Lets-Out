@@ -15,6 +15,12 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const User = require("./models/user.js");
 const LocalStrategy = require("passport-local");
+const events = require('events');
+const { saveRedirectUrl } = require("./middleware.js");
+
+// Increase max listeners limit
+events.EventEmitter.defaultMaxListeners = 15;
+
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/Lets-Out";
 
@@ -61,6 +67,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  res.locals.currentUser = req.user;
   next();
 });
 
