@@ -3,7 +3,8 @@
 <div class="row">
     <div class="col-8 offset-2">
         <h3>Edit your listing</h3>
-        <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" class="needs-validation" novalidate>
+        <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" class="needs-validation" novalidate
+            enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" name="listing[title]" value="<%= listing.title %>" class="form-control" required>
@@ -19,13 +20,28 @@
                     Please enter a short description.
                 </div>
             </div>
+            <div class="mb-3">
+                <label class="form-label fw-bold">Current Image</label>
+                <div class="image-preview">
+                    <% if (listing.image && listing.image.url) { %>
+                        <img src="<%= listing.image.url %>" 
+                             alt="Current listing image"
+                             class="img-fluid rounded shadow-sm" 
+                             style="max-height: 200px; object-fit: cover;">
+                    <% } else { %>
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            No image available
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+
 
             <div class="mb-3">
-                <label for="image" class="form-label">Image URL</label>
-                <input type="text" name="listing[image][url]" value="<%= listing.image.url %>" class="form-control" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
+                <label for="image" class="form-label">Upload new Image</label>
+                <input type="file" name="listing[image]" class="form-control" required>
+                
             </div>
 
             <div class="row">

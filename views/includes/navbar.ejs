@@ -1,73 +1,44 @@
 <nav class="navbar navbar-expand-md bg-light shadow-sm sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" href="/">
+    <a class="navbar-brand d-flex align-items-center" href="/listings">
       <img src="/images/logo.webp" alt="Lets-Out Logo" class="logo-img me-2">
       <span class="brand-text">Lets-Out</span>
     </a>
-    
-    <button class="navbar-toggler border-0 p-2 rounded-circle shadow-sm" 
-    type="button" data-bs-toggle="collapse" 
-    data-bs-target="#navbarNavAltMarkup" 
-    aria-controls="navbarNavAltMarkup" aria-expanded="false" 
-    aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
+    <a class="nav-link ms-2" href="/listings">
+      <i class="fas fa-list me-1"></i> Explore
+    </a>
 
-    
+    <button class="navbar-toggler border-0 p-2 rounded-circle shadow-sm" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
-        <a class="nav-link " aria-current="page" href="/">
-          <i class="fas fa-home me-1"></i> Home
-        </a>
-        <a class="nav-link" href="/listings">
-          <i class="fas fa-list me-1"></i> All Listings
-        </a>
         <a class="nav-link" href="/listings/new">
           <i class="fas fa-plus me-1"></i> Add Listing
-
         </a>
-           <!-- Account Dropdown -->
-        <li class="nav-item dropdown ms-3">
-          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
-            <i class="fas fa-user-circle"></i>
-            <span class="ms-1">My Account</span>
+
+        <% if (!currentUser) { %>
+          <a class="nav-link btn btn-outline mx-2" href="/signup">
+            <i class="fas fa-user-plus me-1"></i> Sign Up
           </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <% if(!currentUser){ %>
-              <li>
-                <a class="dropdown-item" href="/signup">
-                  <i class="fas fa-user-plus"></i>
-                  <span class="ms-2">Sign Up</span>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/login">
-                  <i class="fas fa-sign-in-alt"></i>
-                  <span class="ms-2">Login</span>
-                </a>
-              </li>
-              <li><hr class="dropdown-divider"></li>
-
-            <%}%>
-            <% if(currentUser){ %>
-              
-              <li>
-                <a class="dropdown-item text-danger" href="/logout">
-                  <i class="fas fa-sign-out-alt"></i>
-                  <span class="ms-2">Logout</span>
-                </a>
-              </li>
-
-              <%}%>
-            
-           
-          </ul>
-        </li>
-        
+          <a class="nav-link btn" href="/login">
+            <i class="fas fa-sign-in-alt me-1"></i> Login
+          </a>
+        <% } else { %>
+          <a class="nav-link btn btn-outline" href="/logout">
+            <i class="fas fa-sign-out-alt me-1"></i> Logout
+          </a>
+        <% } %>
       </div>
     </div>
   </div>
 </nav>
+
+
 
 
 
