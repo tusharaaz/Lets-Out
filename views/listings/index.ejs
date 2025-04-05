@@ -1,102 +1,171 @@
 <% layout("layouts/boilerplate") %>
 <style>
-  #filters {
-    display: flex;
-    flex-wrap: wrap;
-   
-  }
-  .filter-item {
+.filters-container {
+    padding: 1rem 0;
+    border-bottom: 1px solid #dee2e6;
+    background-color: #fff;
+}
+.tax-prize{
+  display: none;
+}
+
+.filter-item {
     text-align: center;
-    margin-right: 2rem ;
-    margin-top: 2rem;
+    padding: 0.5rem;
     opacity: 0.7;
-    transition:  0.3s ease;
-  }
-
-  .filter-item:hover {
-    opacity: 1;
+    transition: all 0.3s ease;
     cursor: pointer;
-  }
-</style>
-  
-  <div id="filters">
-   
-        <div class="filter-item">
-            <div class="filter-icon">
-                <i class="fa-solid fa-fire"></i>
-            </div>
-            <p >Trending</p>
-        </div>
-        
-        <div class="filter-item">
-            <div class="filter-icon">
-                <i class="fa-solid fa-star"></i>
-            </div>
-            <p class="filter-label">Top Rated</p>
-        </div>
+}
 
-        <div class="filter-item">
-            <div class="filter-icon">
-                <i class="fa-solid fa-indian-rupee-sign"></i>
-            </div>
-            <p class="filter-label">Budget</p>
-        </div>
+.filter-item:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
 
-        <div class="filter-item">
-            <div class="filter-icon">
-                <i class="fa-solid fa-location-dot"></i>
-            </div>
-            <p class="filter-label">Near You</p>
-        </div>
+.filter-item.active {
+    opacity: 1;
+    border-bottom: 2px solid #0d6efd;
+}
 
-        <div class="filter-item">
-            <div class="filter-icon">
-                <i class="fa-solid fa-gem"></i>
-            </div>
-            <p class="filter-label">Luxury</p>
-        </div>
+.filter-icon {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #212529;
+}
 
-        <div class="filter-item">
-            <div class="filter-icon">
-                <i class="fa-solid fa-house"></i>
-            </div>
-            <p class="filter-label">Houses</p>
-        </div>
+.filter-label {
+    font-size: 0.875rem;
+    margin: 0;
+    white-space: nowrap;
+}
 
-        <div class="filter-item">
-            <div class="filter-icon">
-                <i class="fa-solid fa-building"></i>
-            </div>
-            <p class="filter-label">Apartments</p>
-        </div>
+.tax-toggle {
+    border: 1px solid #dee2e6;
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+}
 
-        <div class="filter-item">
-            <div class="filter-icon">
-                <i class="fa-solid fa-umbrella-beach"></i>
-            </div>
-            <p class="filter-label">Beach</p>
-        </div>
-
-        
-        <div class="filter-item">
-          <div class="filter-icon">
-              <i class="fa-solid fa-mountain"></i>
-          </div>
-          <p class="filter-label">Mountains</p>
-      </div>
-
-      <div class="filter-item">
-          <div class="filter-icon">
-              <i class="fa-solid fa-calendar"></i>
-          </div>
-          <p class="filter-label">New</p>
-      </div>
-
-        
-
+@media (max-width: 768px) {
+    .filters-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
     
-</div>
+    .filters-row {
+        flex-wrap: nowrap;
+        margin-right: -0.5rem;
+        margin-left: -0.5rem;
+    }
+}
+</style>
 
+<div class="container-fluid filters-container">
+    <div class="filters-scroll">
+        <div class="row filters-row g-3">
+            <div class="col-auto">
+                <div class="filter-item active">
+                    <div class="filter-icon">
+                        <i class="fa-solid fa-fire"></i>
+                    </div>
+                    <p class="filter-label">Trending</p>
+                </div>
+            </div>
+            
+            <div class="col-auto">
+                <div class="filter-item">
+                    <div class="filter-icon">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="filter-label">Top Rated</p>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <div class="filter-item">
+                    <div class="filter-icon">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+                    <p class="filter-label">Budget</p>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <div class="filter-item">
+                    <div class="filter-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <p class="filter-label">Near You</p>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <div class="filter-item">
+                    <div class="filter-icon">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <p class="filter-label">Luxury</p>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <div class="filter-item">
+                    <div class="filter-icon">
+                        <i class="fa-solid fa-house"></i>
+                    </div>
+                    <p class="filter-label">Houses</p>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <div class="filter-item">
+                    <div class="filter-icon">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <p class="filter-label">Apartments</p>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <div class="filter-item">
+                    <div class="filter-icon">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                    </div>
+                    <p class="filter-label">Beach</p>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <div class="filter-item">
+                    <div class="filter-icon">
+                        <i class="fa-solid fa-mountain"></i>
+                    </div>
+                    <p class="filter-label">Mountains</p>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <div class="filter-item">
+                    <div class="filter-icon">
+                        <i class="fa-solid fa-calendar"></i>
+                    </div>
+                    <p class="filter-label">New</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <div class="tax-toggle">
+            <div class="form-check form-switch d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="switchCheckDefault">
+                    Display total after taxes
+                </label>
+                <input class="form-check-input ms-2" type="checkbox" role="switch" id="switchCheckDefault">
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
   <% for(let listing of allListings) { %>
@@ -116,8 +185,9 @@
               <p>
                 <div class="overlay"></div>
                 <span class="position-absolute top-0 start-0 m-2 badge bg-success">
-                  ₹ <%= listing.price ? listing.price.toLocaleString("en-IN") : 0 %>/night
+                  ₹ <%= listing.price ? listing.price.toLocaleString("en-IN") : 0 %>/night*
                 </span>
+                <i class="tax-prize"><small>&nbsp;&nbsp;+18% GST*</small></i>
               </p>
               <div class="overlay"></div>
               <span class="position-absolute top-0 end-0 m-2 like"><i class="fa-solid fa-heart"></i></span>
@@ -129,4 +199,18 @@
     </a>
   <% } %>
 </div>
+
+<script>
+  let taxswitch = document.getElementById("switchCheckDefault");
+  taxswitch.addEventListener("click", () => {
+    let taxinfo = document.getElementsByClassName("tax-prize");
+    for (let info of taxinfo) {
+      if (info.style.display === "none" || info.style.display === "") {
+        info.style.display = "block";
+      } else {
+        info.style.display = "none";
+      }
+    }
+  });
+</script>
 

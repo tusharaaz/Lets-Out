@@ -17,6 +17,7 @@ const reviewsRoutes = require("./routes/review.js");
 
 const userRoutes = require('./routes/user');
 const session = require("express-session");
+const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 const passport = require("passport");
 const User = require("./models/user.js");
@@ -28,7 +29,8 @@ const { saveRedirectUrl } = require("./middleware.js");
 events.EventEmitter.defaultMaxListeners = 15;
 
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/Lets-Out";
+// const MONGO_URL = "mongodb://127.0.0.1:27017/Lets-Out";
+const dbUrl = process.env.ATSASDB_URL
 
 main()
   .then(() => {
@@ -39,11 +41,22 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbUrl);
 }
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  crypto: {
+    secret:process.env.SECRET,
+  },
+  touchAfter: 24 * 3600, // time period in seconds
+});
+store.on("error", function (e) {
+  console.log("session store error", e);
+});
 
 const sessionOptions = {
-  secret: "secret",
+  store: store,
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -55,6 +68,8 @@ const sessionOptions = {
 // app.get("/", (req, res) => {
 //   res.send("Hi, I am root");
 // });
+
+
 
 app.use(session(sessionOptions));
 app.use(flash());
